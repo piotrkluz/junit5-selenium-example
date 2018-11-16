@@ -4,7 +4,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.piotrkluz.api.ApiClient;
 import com.piotrkluz.models.User;
 import com.piotrkluz.pages.AllUsersPage;
-import com.piotrkluz.pages.FormPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.LinkedList;
@@ -15,13 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommonSteps {
-    private ChromeDriver driver;
-    private FormPage formPage;
     private AllUsersPage usersPage;
 
     public CommonSteps(ChromeDriver driver) {
-        this.driver = driver;
-        this.formPage = new FormPage(driver);
         this.usersPage = new AllUsersPage(driver);
     }
 
