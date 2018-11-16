@@ -26,7 +26,6 @@ public class CommonSteps {
     }
 
     public void validateUser(User user) {
-        usersPage.open();
         User foundUser = usersPage.tryFindUser(user.name);
         assertNotNull(foundUser, "Not found user by name: " + user.name);
 

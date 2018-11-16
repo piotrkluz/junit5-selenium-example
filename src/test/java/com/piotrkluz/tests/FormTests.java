@@ -1,12 +1,11 @@
 package com.piotrkluz.tests;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.piotrkluz.SeleniumExtension;
 import com.piotrkluz.api.ApiClient;
 import com.piotrkluz.models.User;
-import com.piotrkluz.pages.AllUsersPage;
 import com.piotrkluz.pages.FormPage;
 import com.piotrkluz.steps.CommonSteps;
-import io.github.bonigarcia.SeleniumExtension;
 import org.junit.jupiter.api.*;
 
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,8 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
 @ExtendWith(SeleniumExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class FormTests {
     private ChromeDriver driver;
     private FormPage formPage;
@@ -39,15 +38,9 @@ public class FormTests {
         driver.get("http://85.93.17.135:9000/user/new");
     }
 
-    @AfterEach
-    public void afterfunc() {
-        System.out.print("vdfsdfds");
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {
             "simpleUser",
-            "a",
             "100CharsNameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
             "Numb3rs1234567890",
             "SpecialChars!@#$%^&*()_+",
@@ -66,12 +59,12 @@ public class FormTests {
     @ValueSource(strings = {
             "aaaaaa",
             "aa1234",
-            "a$%~`a",
+            "a$%#`a",
             "100CharsPasswordeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
     })
-    public void passwordValidation(String userName) {
+    public void passwordValidation(String password) {
         User user = new User();
-        user.name = userName;
+        user.password = password;
 
         formPage.createUser(user);
 

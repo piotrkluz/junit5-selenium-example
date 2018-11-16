@@ -24,7 +24,7 @@ public class FormField extends HtmlElement {
         String err = errorMessage.getText();
 
         return err.length() > 0
-                ? String.format("\r\nField: '%s': value: '%s' ERROR: '%s'", label.getText(), input.getAttribute("value"), err)
+                ? String.format("\r\nField: '%s' ERROR: '%s'", label.getText(), err)
                 : "";
     }
 
