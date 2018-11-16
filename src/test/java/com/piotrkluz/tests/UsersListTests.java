@@ -37,7 +37,7 @@ public class UsersListTests {
     }
 
     @Test
-    public void showAllUsersOnList() throws UnirestException {
+    public void verifyUsersOnList() throws UnirestException {
         ApiClient.deleteAllUsers();
         List<User> users = steps.generateUsers(30);
 

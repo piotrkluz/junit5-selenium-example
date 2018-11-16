@@ -7,8 +7,6 @@ import com.piotrkluz.models.User;
 import org.json.JSONObject;
 import static org.junit.jupiter.api.Assumptions.*;
 
-import java.util.logging.Logger;
-
 public class ApiClient {
     public static void deleteAllUsers() throws UnirestException {
         Unirest.delete("http://85.93.17.135:9000/user/all").asString();
