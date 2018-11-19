@@ -1,5 +1,6 @@
 package com.piotrkluz.pages;
 
+import com.piotrkluz.Config;
 import com.piotrkluz.models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -18,7 +19,7 @@ public class AllUsersPage extends AbstractPage {
     }
 
     public String getUrl() {
-        return "http://85.93.17.135:9000/users/all";
+        return Config.BASE_URL + "/users/all";
     }
 
     public boolean isOpened() {

@@ -1,4 +1,5 @@
 package com.piotrkluz.pages;
+import com.piotrkluz.Config;
 import com.piotrkluz.models.User;
 import com.piotrkluz.pages.components.UserForm;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ public class FormPage extends AbstractPage {
     }
 
     public String getUrl() {
-        return "http://85.93.17.135:9000/user/new";
+        return Config.BASE_URL + "/user/new";
     }
 
     public boolean isOpened() {
