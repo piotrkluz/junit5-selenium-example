@@ -1,2 +1,11 @@
 .idea
+.settings
+*.iml
+.project
+.classpath
+.factorypath
+
+allure-results
+allure-reports
+plugins
 target

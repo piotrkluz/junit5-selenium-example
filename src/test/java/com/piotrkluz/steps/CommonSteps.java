@@ -1,10 +1,9 @@
 package com.piotrkluz.steps;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
 import com.piotrkluz.api.ApiClient;
 import com.piotrkluz.models.User;
 import com.piotrkluz.pages.AllUsersPage;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class CommonSteps {
     private AllUsersPage usersPage;
 
-    public CommonSteps(ChromeDriver driver) {
+    public CommonSteps(WebDriver driver) {
         this.usersPage = new AllUsersPage(driver);
     }
 
@@ -31,7 +30,7 @@ public class CommonSteps {
         });
     }
 
-    public List<User> generateUsers(int count) throws UnirestException {
+    public List<User> generateUsers(int count) {
         List<User> users = new LinkedList<>();
 
         for (int i = 0; i < count; i++) {

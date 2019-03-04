@@ -1,7 +1,6 @@
 package com.piotrkluz.tests;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
-import com.piotrkluz.SeleniumExtension;
+import com.piotrkluz.SeleniumProvider;
 import com.piotrkluz.api.ApiClient;
 import com.piotrkluz.models.User;
 import com.piotrkluz.pages.FormPage;
@@ -11,25 +10,26 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SeleniumExtension.class)
+@ExtendWith(SeleniumProvider.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class FormTests {
-    private ChromeDriver driver;
+    private WebDriver driver;
     private FormPage formPage;
     private CommonSteps steps;
 
-    public FormTests(ChromeDriver driver) {
+    public FormTests (RemoteWebDriver driver) {
         this.driver = driver;
         this.formPage = new FormPage(driver);
         this.steps = new CommonSteps(driver);
     }
 
     @BeforeAll
-    public static void clearUsers() throws UnirestException {
+    public static void clearUsers() {
         ApiClient.deleteAllUsers();
     }
 

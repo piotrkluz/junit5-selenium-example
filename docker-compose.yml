@@ -1,0 +1,25 @@
+# To execute this docker-compose yml file use `docker-compose -f <file_name> up`
+# Add the `-d` flag at the end for detached execution
+version: "3"
+services:
+  testapp:
+    build: .
+    container_name: testapp
+#    Use system cache for maven
+    volumes:
+      - ~/.m2:/root/.m2
+    entrypoint:
+      - mvn
+      - test
+    environment:
+      - HUB_URL=http://chrome-standalone:4444/wd/hub
+    depends_on:
+      - chrome-standalone
+
+  chrome-standalone:
+    image: selenium/standalone-chrome:3.141.59-gold
+    container_name: chrome-standalone
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
